@@ -147,7 +147,7 @@ systemctl enable prometheus
 Si firewalld est activé, il faut ajouter les règles de firewall
 ```
 firewall-cmd --zone=public --add-port=9090/tcp --permanent
- `` `
+ ```
 
 On recharge firewalld
 
