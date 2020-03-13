@@ -6,7 +6,7 @@ Note: Ce tuto a été testé avec CentOS mais devrait marcher sur Ubuntu/Debian 
 
 *Téléchargement de l'archive de Prometheus*  
 
-On se rend sur le site officiel de prometheus,la page download et copie l'URL
+On se rend sur le site officiel de prometheus,la page download (https://prometheus.io/download/)  et copie l'URL
 de l'archive "tar".
 ![Prometheus download page](prometheus_download.jpg)
 
@@ -147,7 +147,7 @@ systemctl enable prometheus
 Si firewalld est activé, il faut ajouter les règles de firewall
 ```
 firewall-cmd --zone=public --add-port=9090/tcp --permanent
- `` `
+ ```
 
 On recharge firewalld
 
@@ -161,6 +161,19 @@ Le port par défaut de Prometheus est 9090
 
 On se rend dans la barre d'addresse de notre navigateur Web et on tape : https://ADRESSE_IP_DU_SERVEUR:9090
 
-[!Interface de Prometheus](prometheus_accueil.jpg)
+![Interface de Prometheus](prometheus_accueil.jpg)
 
+
+*Quelques commandes utiles*
+```
+journalctl -u prometheus
+```
+Pour voir le journal systemd de prometheus
+
+```
+/usr/local/bin/promtool check config /etc/prometheus/prometheus.yml
+```
+Pour vérifier le fichier de configuration
+
+Nous verrons comment installer et configurer les exporters pour monitorer
 
