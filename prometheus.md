@@ -164,4 +164,16 @@ On se rend dans la barre d'addresse de notre navigateur Web et on tape : https:/
 ![Interface de Prometheus](prometheus_accueil.jpg)
 
 
+*Quelques commandes utiles*
+```
+journalctl -u prometheus
+```
+Pour voir le journal systemd de prometheus
+
+```
+/usr/local/bin/promtool check config /etc/prometheus/prometheus.yml
+```
+Pour vérifier le fichier de configuration
+
 Nous verrons comment installer et configurer les exporters pour monitorer
+
