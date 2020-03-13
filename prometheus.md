@@ -161,6 +161,7 @@ Le port par défaut de Prometheus est 9090
 
 On se rend dans la barre d'addresse de notre navigateur Web et on tape : https://ADRESSE_IP_DU_SERVEUR:9090
 
-[!Interface de Prometheus](prometheus_accueil.jpg)
+![Interface de Prometheus](prometheus_accueil.jpg)
 
 
+Nous verrons comment installer et configurer les exporters pour monitorer
