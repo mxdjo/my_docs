@@ -6,7 +6,7 @@ Note: Ce tuto a été testé avec CentOS mais devrait marcher sur Ubuntu/Debian 
 
 *Téléchargement de l'archive de Prometheus*  
 
-On se rend sur le site officiel de prometheus,la page download et copie l'URL
+On se rend sur le site officiel de prometheus,la page download (https://prometheus.io/download/)  et copie l'URL
 de l'archive "tar".
 ![Prometheus download page](prometheus_download.jpg)
 
