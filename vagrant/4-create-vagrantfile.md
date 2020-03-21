@@ -56,4 +56,12 @@ Vagrant.configure("2") do |config|
   end
 end
 ```
+### Les namespaces pour customiser son Vagrantfile ###
+Ce sont :   
+* config.vm : pour configurer la machine
+* config.ssh : pour configurer comment Vagrant aura accès à la VM par SSH
+* config.winrm: pour configurer comment Vagrant aura accès à une VM Windows par winrm
+* config.winssh : WinSSH est spécialement conçu pour le port natif Windows d'OpenSSH  
+* config.vagrant: permet de modifier le comportement de Vagrant lui-même (Définir par exemple une liste de plugins à installer pour le projet local).
 
+Voir plus https://www.vagrantup.com/intro/getting-started/project_setup.html•••
