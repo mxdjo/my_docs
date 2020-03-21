@@ -20,7 +20,9 @@ La première commande va créer un fichier "Vagrantfile" indispensable pour init
 #### Connexion à la machine ####
 
 La commande "vagrant up" va créer une machine virtuelle sur Virtualbox et ayant comme OS alpine.   
-On peut normalement se connecter à la machine par ssh en utilisant la commande suivante: 
+Lors de la création, vous avez surement remarqué l'adresse IP et le port pour se connecter par SSH à la machine virtuelle ( généralement 127.0.0.1:2200 ou 127.0.01:2222).   
+
+On peut aussi se connecter facilement à la machine par ssh en utilisant la commande suivante: 
 ```
 vagrant ssh
 ```
