@@ -25,6 +25,7 @@ Il existe plusieurs autres options.Les plus utilisées sont:
 * ansible_ssh_pass: Si l'utilisateur auquel nous nous connectons à une machine requiert un mot de passe, nous pouvons le spécifier dans le fichier d'inventaire avec ansible_ssh_pass.
 Remarque: Ceci est très peu sûr et vous devez utiliser l'authentification par clé SSH ou utiliser l'indicateur --ask-pass sur la ligne de commande pour fournir le mot de passe au moment de l'exécution.  
 * ansible_ssh_private_key_file: Préciser Le fichier de clé SSH utilisé pour se connecter. ansible_ssh_private_key_file=/chemin/vers/id_rsa serait la même chose que ssh –i /chemin/vers/id_rsa  
+* ansible_become_method: la méthode utilisée pour avoir les droits de super utilisateur.La valeur par défaut est sudo.Ce pourrait etre sudo,su ou doas.  
 
 
 Il est possible de déclarer un groupe d'hôtes. L'intérèt est de pouvoir assigner des variables communes (comme le même serveur ntp/proxy..). Pour illustrer, nous utiliserons l'exemple de la documentation officielle d'Ansible
