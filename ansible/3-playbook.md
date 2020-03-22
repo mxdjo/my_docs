@@ -21,4 +21,49 @@ Nous allons faire ping sur tous nos hôtes pour notre premier playbook.
 
 ```
 
+On exécute le playbook avec la commande :
 
+```
+#ansible-playbook chemin_vers_le_play/nom_du_playbook
+
+ansible-playbook playbook.yml
+```
+### Notre second playbook  ###
+
+Nous allons maintenant faire un playbook pour installer le serveur web apache.  
+Je précise que la machine à provisionner est un debian-based.  
+Le module pour faire les installations de paquets sur les systèmes Debian-based est le module **apt**. La documentation pour utilisée bien ce module est ici https://docs.ansible.com/ansible/latest/modules/apt_module.html   
+
+```
+--
+- hosts: all
+  tasks:
+    - name: Installer un serveur web apache2 sur notre Debian
+      apt:
+        name: apache2
+        state: present
+
+
+```
+Nous aurons normalement une erreur "Permission denied". Ce qui est tout à fait normal car l'installation de paquets nécessite des droits de super utilisateur.Cependant Ansible se connecte par défaut avec l'utilisateur 'vagrant' (dans mon cas). C’est là que l’option **become** (qui contrôle quel utilisateur exécute les commande) est très pratique. "become" peut être ajouté à deux endroits différents dans notre playbook. Il peut être ajouté à côté de la tâche qui nécessite plus d'autorisations, ou il peut être ajouté au niveau de chaque playbook, ce qui signifie que chaque commande sera exécutée avec autorisations d'administrateur.   
+Notre playbook devient:
+``` 
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Installer un serveur web apache2 sur notre Debian
+      apt:
+        name: apache2
+        state: present
+```
+
+On exécute le playbook:  
+```
+ansible-playbook playbook.yml
+```
+
+Parfois cela peut nécessiter de préciser le mot de passe du super utilisateur.Dans ce cas, on utilise l'option --ask-become-pass  ou -K   
+```
+ansible-playbook -K playbook.yml
+```
