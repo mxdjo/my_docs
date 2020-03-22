@@ -1,6 +1,6 @@
 Les playbooks Ansible  sont  des fichiers YAML utilisés pour informer Ansible sur ce qu'il devrait faire.
 
-Le concept est simple: ce n'est qu'une série de commandes (tasks) ansibles, comme celles que nous avons utilisées avec l'outil CLI ansible. Ces tâches visent un ensemble spécifique d'hôtes / groupes.   
+Le concept est simple. ce n'est qu'une série de commandes (tasks) ansibles, comme celles que nous avons utilisées avec l'outil CLI ansible. Ces tâches visent un ensemble spécifique d'hôtes / groupes.   
 
 Nous avons juste besoin de dire ce que nous voulons faire en utilisant les bons modules ansibles.   
 
@@ -15,8 +15,10 @@ Nous allons faire ping sur tous nos hôtes pour notre premier playbook.
 
 #On définit ensuite les hôtes sur lesquels executés ces plays et les tasks
 - hosts: all
-tasks:
-- name: Make sure that we can connect to the machine
-ping:
+  tasks:
+   - name: Make sure that we can connect to the machine
+     ping:
 
 ```
+
+
