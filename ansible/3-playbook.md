@@ -67,3 +67,20 @@ Parfois cela peut nécessiter de préciser le mot de passe du super utilisateur.
 ```
 ansible-playbook -K playbook.yml
 ```
+
+### Vérifier son playbook avec ansible-lint ###
+ansible-lint nom_du_playbook
+
+ansible lint doit cependant être installé avec pip
+
+```
+pip install ansible-lint
+```
+
+### Exercice ###
+Créons un playbook qui installe wordpress sous notre serveur ubuntu/debian.    
+Installer Wordpress équivaut à:
+* Installer la Stack LAMP
+* Créer la base de données et l'utilisateur de cette BDD
+* Télécharger l'archive de Wordpress et le désarchiver
+* Configurer le fichier wp-config.php
