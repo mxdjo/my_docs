@@ -2,6 +2,66 @@ On souhaite bloquer les utilisateurs de certains pays ( en se basant sur leurs I
 Cela sera possible grâce à GeoIP.  
 GeoIP permet de trouver le pays d'une adresse IP ou d'un hostname.   
 
+
+
+
+## Debian/Ubuntu ##
+
+###Installation des paquets ###
+
+```
+sudo apt install geoip-bin libapache2-mod-geoip libgeoip1
+```
+
+### Activation de GeoIP dans la configuration de Apache ####
+
+Pour activer le module, il faut utiliser l'outil a2enmod
+```
+sudo a2enmod geoip
+```
+La configuration du module est dans le fichier _/etc/apache2/mods-available/geoip.conf_. Nous allons le modifier
+
+```
+ <IfModule mod_geoip.c>
+   GeoIPEnable On
+   #GeoIPDBFile /usr/share/GeoIP/GeoIP.dat
+ </IfModule>
+```
+
+Ensuite, on y insère le block Directory ( voir utilité de Directory)
+
+```
+<IfModule mod_geoip.c>
+GeoIPEnable On
+GeoIPDBFile /usr/share/GeoIP/GeoIP.dat
+
+
+<Directory />
+SetEnvIf GEOIP_COUNTRY_CODE AN BlockCountry
+SetEnvIf GEOIP_COUNTRY_CODE BL BlockCountry
+SetEnvIf GEOIP_COUNTRY_CODE CN BlockCountry
+
+# ajouter les pays ici selon le code
+# La liste des codes pays est disponible sur le site de Geo IP
+
+Deny from env=BlockCountry
+</Directory>
+
+</IfModule>
+
+
+```
+
+Telecharger GeoIP.dat et le mettre dans son dossier  
+```
+wget https://mirrors-cdn.liferay.com/geolite.maxmind.com/download/geoip/database/GeoIP.dat.gz
+```
+```
+gzip GeoIp.dat.gz
+```
+```
+mv GeoIP.dat /usr/share/GeoIP
+```
 ## CentOS ##
 
 ### Installation des paquets ####
@@ -43,8 +103,13 @@ SetEnvIf GEOIP_COUNTRY_CODE CN BlockCountry
 
 Deny from env=BlockCountry
 </Directory>
+</IfModule mod_geoip.c>
 ```
-NB: Pour des raisons de performance, il faut activer GeoIP dans un block <Directory> ou un block <Location> 
+NB: Pour des raisons de performance, il faut activer GeoIP dans un block <Directory> ou un block <Location>    
+
+
+## !!! Maxminddb ####
+Utiliser mod_maxminddb au lieu de mod_geoip (en cours de test)
 
 
 ### La base de données GeoIP ###
@@ -78,61 +143,17 @@ Pour faire des requetes sur ces fichiers, il faut installer le module mod_maxmin
 
 ### Le module mod_maxminddb ###
 
-#### INstallation de la bibliotheque C libmaxminddb ####
-
-```
-cd /tmp
-```
-La bibliotheque est dispo sur Github ( voir https://github.com/maxmind/libmaxminddb )
-```
-
-wget https://github.com/maxmind/libmaxminddb/releases/download/1.4.2/libmaxminddb-1.4.2.tar.gz
-```
-```
-tar -zxvf lib*.tar.gz
-```
-
-```
-cd lib*.tar.gz
-```
-
-```
-./configure
-
-```
-```
-make
-```
-
-```
-make check
-```
-
-```
-make install
-
-```
-
-```
-ldconfig
-```
 
 #### Installation du module mod_maxminddb ####
 
-Le module est aussi disponible sur GitHub
+sudo apt install libmaxminddb0 libmaxminddb-dev mmdb-bin
 
-https://github.com/maxmind/mod_maxminddb/releases   
+Si cela ne marche,il faut ajouter le repo et refaire:
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:maxmind/ppa
+sudo apt update
+sudo apt install libmaxminddb0 libmaxminddb-dev mmdb-bin apache2-dev
 
-```
-https://github.com/maxmind/mod_maxminddb/releases/download/1.2.0/mod_maxminddb-1.2.0.tar.gz
-```
-
-```
-./configure
-```
-```
-make install
-```
 
 ### COnfiguration Apache pour utiliser le module ###
 
@@ -191,58 +212,20 @@ MaxMindDBEnv REGION_CODE  CITY_DB/subdivisions/0/iso_code
 **Bloquer par pays**
 
 ```
+<IfModule mod_maxminddb.c>
 MaxMindDBEnable On
 MaxMindDBFile DB /usr/local/share/GeoIP/GeoLite2-Country.mmdb
 MaxMindDBEnv MM_COUNTRY_CODE DB/country/iso_code
 
 SetEnvIf MM_COUNTRY_CODE ^(RU|DE|FR) BlockCountry
 Deny from env=BlockCountry
-```
-
-
-## Debian/Ubuntu ##
-
-###Installation des paquets ###
-
-```
-sudo apt install geoip-bin libapache2-mod-geoip libgeoip1
-```
-
-### Activation de GeoIP dans la configuration de Apache ####
-
-Pour activer le module, il faut utiliser l'outil a2enmod
-```
-sudo a2enmod geoip
-```
-La configuration du module est dans le fichier _/etc/apache2/mods-available/geoip.conf_. Nous allons le modifier
-
-```
- <IfModule mod_geoip.c>
-   GeoIPEnable On
-   #GeoIPDBFile /usr/share/GeoIP/GeoIP.dat
- </IfModule>
-```
-
-Ensuite, on y insère le block Directory ( voir utilité de Directory)
-
-```
-<IfModule mod_geoip.c>
-GeoIPEnable On
-GeoIPDBFile /usr/share/GeoIP/GeoIP.dat
-
-
-<Directory />
-SetEnvIf GEOIP_COUNTRY_CODE AN BlockCountry
-SetEnvIf GEOIP_COUNTRY_CODE BL BlockCountry
-SetEnvIf GEOIP_COUNTRY_CODE CN BlockCountry
-
-# ajouter les pays ici selon le code
-# La liste des codes pays est disponible sur le site de Geo IP
-
-Deny from env=BlockCountry
-</Directory>
-
 </IfModule>
-
-
 ```
+
+Nb: On peut toujours utiliser le GeoIP.dat mais il n'est pas mis à jour par Maxwind  
+
+
+
+
+
+
