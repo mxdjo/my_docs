@@ -8,16 +8,17 @@ Par défaut, Ansible lit le fichier _/etc/ansible/hosts_ comme son fichier d'inv
 #ansible all –i /path/to/inventory –m ping
 ansible all /home/my_hosts -m ping
 ```
-Mon fichier inventory (/home/my_format) est au format INI, un peu comme ceci:  
+Mon fichier inventory (/home/my_hosts) est au format INI, un peu comme ceci:  
 ```
 host1.exemple.com
 host2.example.ci
 192.168.9.29
 ```
 
-Si nous utilisons par le port standard SSH, nous pouvons le préciser avec ansible_port
+Si nous n'utilisons pas le port standard SSH, nous pouvons le préciser avec ansible_port
 
 ```
+## Port SSH dans mon cas 2255
 192.0.1.8 ansible_port=2255
 ```
 Il existe plusieurs autres options.Les plus utilisées sont:  

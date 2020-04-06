@@ -1,4 +1,5 @@
 ###  Definition de python3 comme interpréteur par défaut ###
+Comme nous l'avons vu précédemment, python est l'un des pré-requis pour utiliser Ansible.  
 A la date de redaction de ce fichier, Python2 est déprécié.
 Il faut donc installer python3 si cela n'a pas été déja fait ( A installer selon votre distribution).
 Ensuite il faut définir python3 comme interpréteur par défaut  .
@@ -38,7 +39,7 @@ Il faut modifier le Vagrantfile comme en ajoutant ceci:
 
 ```
 
-### Configuration de la connexion SSH par clé
+### Configuration de la connexion SSH par clé ###
 
 La connexion se fait par SSH.  
 Il faut donc configurer une connexion SSH par clé.   
@@ -53,7 +54,7 @@ ssh-copy-id username@IPdelamachine
 ```
 La phrase de passe nous sera demandée.  
  
-**note**: Avec les VM faites avec Vagrant, il faut parfois activer l'authentifciation par clé pour pouvoir copier la clé.Dans ce cas, il faut mettre le paramètre PasswordAuthentication à yes dans le fichier /etc/ssh/sshd_config
+**note**: Avec les VM faites avec Vagrant, il faut parfois activer l'authentifciation par mot de passe pour pouvoir copier la clé SSH sur la VM vagrant.Dans ce cas, il faut mettre le paramètre PasswordAuthentication à yes dans le fichier /etc/ssh/sshd_config
 
 ```
 sudo vim /etc/ssh/sshd_config
