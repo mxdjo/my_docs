@@ -107,6 +107,10 @@ Deny from env=BlockCountry
 ```
 NB: Pour des raisons de performance, il faut activer GeoIP dans un block <Directory> ou un block <Location>    
 
+https://www.cloudibee.com/geoip-based-country-blocking-for-apache/
+
+**Il faut aussi voir la possibilité de bloquer un ASN et une plage d'IP**
+
 
 ## !!! Maxminddb ####
 Utiliser mod_maxminddb au lieu de mod_geoip (en cours de test)
