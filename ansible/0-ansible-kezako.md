@@ -51,7 +51,7 @@ Par constrate, avec les outils Push-based par défaut comme Ansible
 
 L'approche push-based a un avantage signifiant: nous choississons quand faire un changement sur les serveurs sans attendre un certain temps.    
 Vous aurez pu choisir un outil pull-based. 
-Cependant je choisis personnellement Ansible à cause de la communauté qui la soutient.Tout projet open-source n'est rien sans sa communauté. Avec le mouvement Devops, plusieurs personnes s'intéressent au langage Python
+Cependant je choisis personnellement Ansible à cause de la communauté qui la soutient.Tout projet open-source n'est rien sans sa communauté. Avec le mouvement Devops, plusieurs personnes s'intéressent au langage Python. Cette vaste communauté propose des modules, des roles Ansible...
 
 ### Que devons nous avoir comme pré-requis pour utiliser Ansible ###
 Ansible vient pour faciliter certaines choses. Il faut cependant savoir comment cela se fait plus ou moins de façon manuelle. Parmi les pré-requis, l'utilisateur d'Ansible doit savoir:  
@@ -64,3 +64,7 @@ Ansible vient pour faciliter certaines choses. Il faut cependant savoir comment 
 * ...
 Si vous êtes familiers avec ces choses, vous pourrez utiliser facilement Ansible. Aussi Ansible utilise YAML pour les playbooks et Jinja2 pour les templates donc nous aurons à apprendre ces deux languages qui sont cependant faciles à comprendre.  
 
+### Qu'est ce qui est couvert dans ce repo ###
+
+L'objectif de ce repo est de permettre aux débutants d'avoir une prise en main rapide de l'outil.Je ne couvre pas en détail les 200+ modules existants.  
+Aussi Ansible Tower n'est pas couvert ici. Aussi nous ne parlerons pas d'autres fonctionnalités de Ansible (comme le focntionnement de Ansible en mode pull).
