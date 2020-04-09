@@ -1,4 +1,4 @@
-### C'est quoi Ansible ###### C'est quoi Ansible ###
+### C'est quoi Ansible ###
 
 Michael DeHaan a pris le nom Ansible dans le livre Ender's Game de Orson Scott C
 ard. Dans ce livre, l'ansible était utilisé pour controler un nombre important d
@@ -37,6 +37,21 @@ Notons que Ansible exécute les taches dans l'ordre que nous avons spécifié da
 Quelles sont les raisons qui peuvent pousser à choisir Ansible au détriment des autres outils de gestion de configuration?  
 1. La syntaxe facile des playbooks: Le language utilisé pour les playbooks est le YAML, un language facile à lire et à écrire( tant que vous respectez les indentations) 
 2. Pas/peu de dépendance: Pour gérer un serveur avec Ansible, il faut que ce serveur ait SSH et Python 2.5+, ou encore Pyton2.4 associé à la librairie Python simplejson.    
+3. Un outil **Push-based** : Certains outils de gestion de configuration comme Chef et Puppet utilisent des agents. Ils sont dits "pull-based" par défaut. Sur un système pull based, les étapes de configuration sont les suivantes : 
+* Vous faites un changement dans le script de gestion de la configuration  
+* Vous faites un "push" vers le service central de gestion de configuration
+* Les agents installés sur les serveurs à configurer se reveillent, font des vérification régulières selon un temps défini
+* Les agents se connectent au service central de gestion
+* Les agents téléchargent la nouvelle configuration dans les scripts
+
+Par constrate, avec les outils Push-based par défaut comme Ansible
+* On modifie le playbook
+* On exécute le playbook
+* Ansible se connecte aux serveurs, exécute les modules qui changent l'état des serveurs
+
+L'approche push-based a un avantage signifiant: nous choississons quand faire un changement sur les serveurs sans attendre un certain temps.    
+Vous aurez pu choisir un outil pull-based. 
+Cependant je choisis personnellement Ansible à cause de la communauté qui la soutient.Tout projet open-source n'est rien sans sa communauté. Avec le mouvement Devops, plusieurs personnes s'intéressent au langage Python
 
 ### Que devons nous avoir comme pré-requis pour utiliser Ansible ###
 Ansible vient pour faciliter certaines choses. Il faut cependant savoir comment cela se fait plus ou moins de façon manuelle. Parmi les pré-requis, l'utilisateur d'Ansible doit savoir:  
