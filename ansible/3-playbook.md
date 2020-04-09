@@ -9,6 +9,10 @@ Nous avons juste besoin de dire ce que nous voulons faire en utilisant les bons 
  
 Nous allons faire ping sur tous nos hôtes pour notre premier playbook.
 
+Chaque playbook doit contenir:
+* des hôtes à configurer
+* une liste de tâches à exécuter sur ces hôtes 
+
 ```
 ---
 ### Le playbook commence par les trois tirets du haut
@@ -32,7 +36,11 @@ ansible-playbook playbook.yml
 
 Nous allons maintenant faire un playbook pour installer le serveur web apache.  
 Je précise que la machine à provisionner est un debian-based.  
-Le module pour faire les installations de paquets sur les systèmes Debian-based est le module **apt**. La documentation pour utilisée bien ce module est ici https://docs.ansible.com/ansible/latest/modules/apt_module.html   
+Le module pour faire les installations de paquets sur les systèmes Debian-based est le module **apt**. La documentation pour utiliser bien ce module est ici https://docs.ansible.com/ansible/latest/modules/apt_module.html  
+On peut aussi avoir la documentation d'un module en ligne de commande "ansible-doc nom_du_module"
+   
+
+Notre playbook pour installer Apache sera comme suit:   
 
 ```
 --
@@ -78,7 +86,10 @@ pip install ansible-lint
 ```
 
 ### Exercice ###
-Créons un playbook qui installe wordpress sous notre serveur ubuntu/debian.    
+Créons un playbook qui installe wordpress sous notre serveur ubuntu/debian.   
+    
+**Aide**   
+
 Installer Wordpress équivaut à:
 * Installer la Stack LAMP
 * Créer la base de données et l'utilisateur de cette BDD
