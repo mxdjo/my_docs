@@ -4,10 +4,25 @@ Pour utiliser ansible à partir de la ligne de commande, nous devons fournir au 
 
 ### Nos premieres commandes ###
 
-Nous allons utiliser le module setup comme premier module.    
+Nous allons utiliser le module ping comme premier module.    
 
 ```
-ansible nom_de_la_machine_ou_ip -m setup
+ansible nom_de_la_machine_ou_ip -m ping
 ```
-Le module setup 
-#On commencera par le ping ensuite module setup, shell, copy, 
+Nous allons maintenant utiliser le module setup
+
+```
+ansible nom_ou_ip_machine -m setup
+```
+Le prochain module à utiliser est le module command. Il permet d'exécuter des commandes shell sur la machine distante
+
+```
+ansible nom_ou_ip_machine -m command -a pwd
+```
+Dans ce cas, on exécute la commande "pwd". L'option -a permet de donner un arguement au module. Cependant le module command est le module par défaut pour les commandes adhoc. On aurait pu donc faire: 
+
+```
+ansible nom_ou_ip_machine -a pwd
+```
+
+Vous pouvez vous référer à la documentation de Ansible pour voir les autres modules.
