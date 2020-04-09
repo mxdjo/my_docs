@@ -30,6 +30,12 @@ mkdir -p /etc/ansible
 touch /etc/ansible/ansible.cfg
 ```
 
+Note: Ansible recherche le fichier "ansible.cfg" dans les endroits suivants (selon cet ordre):
+1. Dans le fichier défini comme variable d'environnement ANSIBLE_CONFIG
+2. /ansible.cfg (ansible.cfg dans le répertoire actuel)
+3. ~/.ansible.cfg (.ansible.cfg dans le dossier personnel de l'utilisateur)
+4. /etc/ansible/ansible.cfg
+
 ### Configuration de la connexion SSH par clé ###
 
 La connexion se fait par SSH.  
@@ -89,9 +95,11 @@ vagrant up
 vagrant ssh-config
 ```
 
-Le chemin complet de notre clé se trouve sur la ligne **IdentityFile**
-
-
-
-  
+Les lignes qui nous intéressent sont:
+``` 
+HostName 127.0.0.1
+  User vagrant
+  Port 2222
+  IdentityFile /home/mario/learning-projects/learn-ansible/.vagrant/machines/default/virtualbox/private_key
+```
 
