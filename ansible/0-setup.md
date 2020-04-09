@@ -27,16 +27,7 @@ mkdir -p /etc/ansible
 ```
 
 ```
-vim /etc/ansible/ansible.cfg
-```
-### (Optionnel)Configuration de vm vagrant avec private network ip 192.168.33.10 ###
-
-Le but est d'attribuer une adresse IP à notre VM. Si vous l'avez déja fait sous Virtualbox ou Vmware Workstation, vous pouvez sauter cette étape.   
-Il faut modifier le Vagrantfile comme en ajoutant ceci:
-
-```
-   config.vm.network "private_network", ip: "192.168.33.10"
-
+touch /etc/ansible/ansible.cfg
 ```
 
 ### Configuration de la connexion SSH par clé ###
@@ -53,15 +44,54 @@ Ensuite on copie la clé sur la machine à controler
 ssh-copy-id username@IPdelamachine
 ```
 La phrase de passe nous sera demandée.  
- 
-**note**: Avec les VM faites avec Vagrant, il faut parfois activer l'authentifciation par mot de passe pour pouvoir copier la clé SSH sur la VM vagrant.Dans ce cas, il faut mettre le paramètre PasswordAuthentication à yes dans le fichier /etc/ssh/sshd_config
+Ce processus est un peu différent pour les VM vagrant.  
 
+#### Gestion de clés SSH avec les VM vagrant ####
+
+##### Méthode 1 #####
+
+Quand on veut utiliser la méthode précédente avec les VM faites avec Vagrant, il faut parfois activer l'authentification par mot de passe pour pouvoir copier la clé SSH sur la VM vagrant.Dans ce cas, il faut mettre le paramètre PasswordAuthentication à yes dans le fichier /etc/ssh/sshd_config.
+On se connecte à la VM via vagrant ssh
+```
+vagrant ssh
+```
+Ensuite on modifie le fichier de configuration du service SSH
 ```
 sudo vim /etc/ssh/sshd_config
 ```
 ```
 PasswordAuthentication yes
 ```
+Il faut maintenant ressortir et définir une adrese IP à la machine  
+Sur l'hôte Vagrant, il faut modifier le Vagrantfile en ajoutant ceci:
 
-Une fois la clé copiée, on peut passer à autre chose.  
+```
+config.vm.network "private_network", ip: "X.X.X.X"
+
+```
+On peut maintenant copier la clé avec ssh-copy-id
+
+```
+ssh-copy-id username@X.X.X.X
+```
+
+On peut maintenant faire des commandes ad-hoc pour vérifier la connexion entre ansible et la machine à controler
+
+##### Méthode 2 #####
+Avez vous remarqué que vagrant ne demande pas de mot de passe lorsqu'on se connecte à un guest vagrant en utilisant "vagrant ssh". C'est parce que vagrant génère une clé sur l'hôte Vagrant pour faciliter la connexion.  
+Il est possible de retrouver la clé utilisée pour une machine en démarrant la machine et utilisant la commande "vagrant ssh-config"
+
+```
+vagrant up
+```
+
+```
+vagrant ssh-config
+```
+
+Le chemin complet de notre clé se trouve sur la ligne **IdentityFile**
+
+
+
+  
 
