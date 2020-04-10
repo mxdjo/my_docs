@@ -79,19 +79,12 @@ ansible-playbook -K playbook.yml
 ### Vérifier son playbook avec ansible-lint ###
 ansible-lint nom_du_playbook
 
-ansible lint doit cependant être installé avec pip
+ansible-lint doit cependant être installé avec pip
 
 ```
 pip install ansible-lint
 ```
 
 ### Exercice ###
-Créons un playbook qui installe wordpress sous notre serveur ubuntu/debian.   
-    
-**Aide**   
+Créons un playbook qui permet d'installer la Stack LAMP sur Ubuntu/Debian
 
-Installer Wordpress équivaut à:
-* Installer la Stack LAMP
-* Créer la base de données et l'utilisateur de cette BDD
-* Télécharger l'archive de Wordpress et le désarchiver
-* Configurer le fichier wp-config.php
