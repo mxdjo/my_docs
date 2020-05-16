@@ -76,6 +76,10 @@ Parfois cela peut nécessiter de préciser le mot de passe du super utilisateur.
 ansible-playbook -K playbook.yml
 ```
 
+### Paramètres optionnels dans les playbooks ####
+
+En plus des _tasks_ et des _hosts_, on peut avoir dans un playbook _become_ qui permet d'exécuter le playbook en tant qu'autre utilisateur ( root) par exemple, _vars_ qui définit une liste de variables et leurs valeurs
+
 ### Vérifier son playbook avec ansible-lint ###
 ansible-lint nom_du_playbook
 
