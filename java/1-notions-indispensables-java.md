@@ -93,4 +93,17 @@ Après avoir déclaré la variable et l'avoir affectée à l'objet, chaque fois 
 
 ### Public ###
 
-public est un modificateur d'accès qui définit que la classe ou la méthode marquée comme public peut être utilisée par n'importe quelle autre classe à partir de n'importe quel autre package. Outre public, il existe également d'autres modificateurs d'accès tels que privé, par défaut et protégé, que je couvrirai plus en détail plus tard.
+Chaque variable déclarée en Java a une portée. C'est-à-dire un champ d’accessibilité dans lequel elle peut être utilisée.Chaque variable n'est disponible et accessible que dans le contexte dans lequel elle a été déclarée.   
+
+public est un modificateur d'accès qui définit que la classe ou la méthode marquée comme public peut être utilisée par n'importe quelle autre classe à partir de n'importe quel autre.  
+La portée d'une variable peut être locale ou globale, en fonction de l'endroit où la variable est déclarée. Une variable globale peut être disponible pour toutes les classes et méthodes d'un programme, alors qu'une variable locale ne peut être disponible que dans la méthode dans laquelle elle est déclarée.     
+
+En Java, vous devez utiliser un des mots clés pour désigner un niveau de contrôle :
+
+    * public : visible pour tous et par conséquent le moins restrictif ;
+
+    * protected (protégé) : visible pour le package et l'ensemble de ses sous-classes ;
+
+    * package-protected (protégé par paquet) : généralement visible uniquement par le package dans lequel il se trouve (paramètres par défaut) ;
+
+    * private (privé) : accessible uniquement dans le contexte dans lequel les variables sont définies (à l'intérieur de la classe dans laquelle il est situé).
