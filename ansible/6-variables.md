@@ -88,33 +88,14 @@ ansible_facts": {
             "epoch": "1590517748",
             "hour": "18",
             "iso8601": "2020-05-26T18:29:08Z",
-            "iso8601_basic": "20200526T182908493034",
-            "iso8601_basic_short": "20200526T182908",
-            "iso8601_micro": "2020-05-26T18:29:08.493095Z",
-            "minute": "29",
-            "month": "05",
-            "second": "08",
-            "time": "18:29:08",
-            "tz": "UTC",
-            "tz_offset": "+0000",
-            "weekday": "Tuesday",
-            "weekday_number": "2",
-            "weeknumber": "21",
-            "year": "2020"
+      
         },
         "ansible_default_ipv4": {
             "address": "10.0.2.15",
             "alias": "eth0",
             "broadcast": "10.0.2.255",
             "gateway": "10.0.2.2",
-            "interface": "eth0",
-            "macaddress": "08:00:27:76:b9:09",
-            "mtu": 1500,
-            "netmask": "255.255.255.0",
-            "network": "10.0.2.0",
-            "type": "ether"
-        },
-        "ansible_default_ipv6": {},
+   ,
         "ansible_device_links": {
             "ids": {
                 "dm-0": [
@@ -170,13 +151,7 @@ ansible_facts": {
                 "rotational": "1",
                 "sas_address": null,
                 "sas_device_handle": null,
-                "scheduler_mode": "",
-                "sectors": "132202496",
-                "sectorsize": "512",
-                "size": "63.04 GB",
-                "support_discard": "0",
-                "vendor": null,
-                "virtual": 1
+
             },
             "dm-1": {
                 "holders": [],
@@ -194,15 +169,7 @@ ansible_facts": {
                 },
                 "model": null,
                 "partitions": {},
-                "removable": "0",
-                "rotational": "1",
-                "sas_address": null,
-                "sas_device_handle": null,
-                "scheduler_mode": "",
-                "sectors": "2007040",
-                "sectorsize": "512",
-                "size": "980.00 MB",
-                "support_discard": "0",
+      
                 "vendor": null,
                 "virtual": 1
             },
@@ -210,24 +177,12 @@ ansible_facts": {
                 "holders": [],
                 "host": "",
                 "links": {
-                    "ids": [],
-                    "labels": [],
-                    "masters": [],
-                    "uuids": []
+       
                 },
                 "model": null,
                 "partitions": {},
                 "removable": "0",
-                "rotational": "1",
-                "sas_address": null,
-                "sas_device_handle": null,
-                "scheduler_mode": "none",
-                "sectors": "0",
-                "sectorsize": "512",
-                "size": "0.00 Bytes",
-                "support_discard": "4096",
-                "vendor": null,
-                "virtual": 1
+     
             },
             "loop1": {
                 "holders": [],
@@ -251,190 +206,7 @@ ansible_facts": {
                 "support_discard": "0",
                 "vendor": null,
                 "virtual": 1
-            },
-            "loop2": {
-                "holders": [],
-                "host": "",
-                "links": {
-                    "ids": [],
-                    "labels": [],
-                    "masters": [],
-                    "uuids": []
-                },
-                "model": null,
-                "partitions": {},
-                "removable": "0",
-                "rotational": "1",
-                "sas_address": null,
-                "sas_device_handle": null,
-                "scheduler_mode": "none",
-                "sectors": "0",
-                "sectorsize": "512",
-                "size": "0.00 Bytes",
-                "support_discard": "0",
-                "vendor": null,
-                "virtual": 1
-            },
-            "loop3": {
-                "holders": [],
-                "host": "",
-                "links": {
-                    "ids": [],
-                    "labels": [],
-                    "masters": [],
-                    "uuids": []
-                },
-                "model": null,
-                "partitions": {},
-                "removable": "0",
-                "rotational": "1",
-                "sas_address": null,
-                "sas_device_handle": null,
-                "scheduler_mode": "none",
-                "sectors": "0",
-                "sectorsize": "512",
-                "size": "0.00 Bytes",
-                "support_discard": "0",
-                "vendor": null,
-                "virtual": 1
-            },
-            "loop4": {
-                "holders": [],
-                "host": "",
-                "links": {
-                    "ids": [],
-                    "labels": [],
-                    "masters": [],
-                    "uuids": []
-                },
-                "model": null,
-                "partitions": {},
-                "removable": "0",
-                "rotational": "1",
-                "sas_address": null,
-                "sas_device_handle": null,
-                "scheduler_mode": "none",
-                "sectors": "0",
-                "sectorsize": "512",
-                "size": "0.00 Bytes",
-                "support_discard": "0",
-                "vendor": null,
-                "virtual": 1
-            },
-            "loop5": {
-                "holders": [],
-                "host": "",
-                "links": {
-                    "ids": [],
-                    "labels": [],
-                    "masters": [],
-                    "uuids": []
-                },
-                "model": null,
-                "partitions": {},
-                "removable": "0",
-                "rotational": "1",
-                "sas_address": null,
-                "sas_device_handle": null,
-                "scheduler_mode": "none",
-                "sectors": "0",
-                "sectorsize": "512",
-                "size": "0.00 Bytes",
-                "support_discard": "0",
-                "vendor": null,
-                "virtual": 1
-            },
-            "loop6": {
-                "holders": [],
-                "host": "",
-                "links": {
-                    "ids": [],
-                    "labels": [],
-                    "masters": [],
-                    "uuids": []
-                },
-                "model": null,
-                "partitions": {},
-                "removable": "0",
-                "rotational": "1",
-                "sas_address": null,
-                "sas_device_handle": null,
-                "scheduler_mode": "none",
-                "sectors": "0",
-                "sectorsize": "512",
-                "size": "0.00 Bytes",
-                "support_discard": "0",
-                "vendor": null,
-                "virtual": 1
-            },
-            "loop7": {
-                "holders": [],
-                "host": "",
-                "links": {
-                    "ids": [],
-                    "labels": [],
-                    "masters": [],
-                    "uuids": []
-                },
-                "model": null,
-                "partitions": {},
-                "removable": "0",
-                "rotational": "1",
-                "sas_address": null,
-                "sas_device_handle": null,
-                "scheduler_mode": "none",
-                "sectors": "0",
-                "sectorsize": "512",
-                "size": "0.00 Bytes",
-                "support_discard": "0",
-                "vendor": null,
-                "virtual": 1
-            },
-            "sda": {
-                "holders": [],
-                "host": "SATA controller: Intel Corporation 82801HM/HEM (ICH8M/ICH8M-E) SATA Controller [AHCI mode] (rev 02)",
-                "links": {
-                    "ids": [
-                        "ata-VBOX_HARDDISK_VBff8977b6-2ff8395d"
-                    ],
-                    "labels": [],
-                    "masters": [],
-                    "uuids": []
-                },
-                "model": "VBOX HARDDISK",
-                "partitions": {
-                    "sda1": {
-                        "holders": [
-                            "vagrant--vg-swap_1",
-                            "vagrant--vg-root"
-                        ],
-                        "links": {
-                            "ids": [
-                                "ata-VBOX_HARDDISK_VBff8977b6-2ff8395d-part1",
-                                "lvm-pv-uuid-1y8Xkn-DRRA-Wsvd-yajR-Og8j-MCPp-xu15u5"
-                            ],
-                            "labels": [],
-                            "masters": [
-                                "dm-0",
-                                "dm-1"
-                            ],
-                            "uuids": []
-                        },
-                        "sectors": "134213632",
-                        "sectorsize": 512,
-                        "size": "64.00 GB",
-                        "start": "2048",
-                        "uuid": null
-                    }
-                },
-                "removable": "0",
-                "rotational": "1",
-                "sas_address": null,
-                "sas_device_handle": null,
-                "scheduler_mode": "cfq",
-                "sectors": "134217728",
-                "sectorsize": "512",
-                "size": "64.00 GB",
+ 
                 "support_discard": "0",
                 "vendor": "ATA",
                 "virtual": 1
@@ -462,31 +234,7 @@ ansible_facts": {
             "HOME": "/home/vagrant",
             "LANG": "C",
             "LANGUAGE": "en_US:",
-            "LC_ADDRESS": "fr_FR.UTF-8",
-            "LC_ALL": "C",
-            "LC_IDENTIFICATION": "fr_FR.UTF-8",
-            "LC_MEASUREMENT": "fr_FR.UTF-8",
-            "LC_MESSAGES": "C",
-            "LC_MONETARY": "fr_FR.UTF-8",
-            "LC_NAME": "fr_FR.UTF-8",
-            "LC_NUMERIC": "fr_FR.UTF-8",
-            "LC_PAPER": "fr_FR.UTF-8",
-            "LC_TELEPHONE": "fr_FR.UTF-8",
-            "LC_TIME": "fr_FR.UTF-8",
-            "LOGNAME": "vagrant",
-            "MAIL": "/var/mail/vagrant",
-            "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games",
-            "PWD": "/home/vagrant",
-            "SHELL": "/bin/bash",
-            "SHLVL": "1",
-            "SSH_CLIENT": "192.168.56.1 47436 22",
-            "SSH_CONNECTION": "192.168.56.1 47436 192.168.56.101 22",
-            "SSH_TTY": "/dev/pts/0",
-            "TERM": "xterm-256color",
-            "USER": "vagrant",
-            "XDG_RUNTIME_DIR": "/run/user/1000",
-            "XDG_SESSION_ID": "25",
-            "_": "/bin/sh"
+          
         },
         "ansible_eth0": {
             "active": true,
@@ -498,51 +246,7 @@ ansible_facts": {
                 "generic_receive_offload": "on",
                 "generic_segmentation_offload": "on",
                 "highdma": "off [fixed]",
-                "hw_tc_offload": "off [fixed]",
-                "l2_fwd_offload": "off [fixed]",
-                "large_receive_offload": "off [fixed]",
-                "loopback": "off [fixed]",
-                "netns_local": "off [fixed]",
-                "ntuple_filters": "off [fixed]",
-                "receive_hashing": "off [fixed]",
-                "rx_all": "off",
-                "rx_checksumming": "off",
-                "rx_fcs": "off",
-                "rx_udp_tunnel_port_offload": "off [fixed]",
-                "rx_vlan_filter": "on [fixed]",
-                "rx_vlan_offload": "on",
-                "rx_vlan_stag_filter": "off [fixed]",
-                "rx_vlan_stag_hw_parse": "off [fixed]",
-                "scatter_gather": "on",
-                "tcp_segmentation_offload": "on",
-                "tx_checksum_fcoe_crc": "off [fixed]",
-                "tx_checksum_ip_generic": "on",
-                "tx_checksum_ipv4": "off [fixed]",
-                "tx_checksum_ipv6": "off [fixed]",
-                "tx_checksum_sctp": "off [fixed]",
-                "tx_checksumming": "on",
-                "tx_esp_segmentation": "off [fixed]",
-                "tx_fcoe_segmentation": "off [fixed]",
-                "tx_gre_csum_segmentation": "off [fixed]",
-                "tx_gre_segmentation": "off [fixed]",
-                "tx_gso_partial": "off [fixed]",
-                "tx_gso_robust": "off [fixed]",
-                "tx_ipxip4_segmentation": "off [fixed]",
-                "tx_ipxip6_segmentation": "off [fixed]",
-                "tx_lockless": "off [fixed]",
-                "tx_nocache_copy": "off",
-                "tx_scatter_gather": "on",
-                "tx_scatter_gather_fraglist": "off [fixed]",
-                "tx_sctp_segmentation": "off [fixed]",
-                "tx_tcp6_segmentation": "off [fixed]",
-                "tx_tcp_ecn_segmentation": "off [fixed]",
-                "tx_tcp_mangleid_segmentation": "off",
-                "tx_tcp_segmentation": "on",
-                "tx_udp_tnl_csum_segmentation": "off [fixed]",
-                "tx_udp_tnl_segmentation": "off [fixed]",
-                "tx_vlan_offload": "on [fixed]",
-                "tx_vlan_stag_hw_insert": "off [fixed]",
-                "udp_fragmentation_offload": "off",
+        
                 "vlan_challenged": "off [fixed]"
             },
             "hw_timestamp_filters": [],
@@ -610,7 +314,6 @@ Pour accéder à la variable d'un autre node:
 
 Dans un playbook, on peut définir les variables mais aussi les définir dans un fichier YAML
 
-```
 
 
 ```
@@ -626,6 +329,19 @@ Dans un playbook, on peut définir les variables mais aussi les définir dans un
   - name: this is just a placeholder
     command: /bin/echo foo
 ```
+
+Il faut cependant tenir compte de l'ordre de preference d'Ansible dans l'exécution.
+
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#ansible-variable-precedence
+Ce qui veut dire que si on définit dans notre Inventory: ansible_user: albert et qu'on exécute
+
+```
+ansible -u super_user host 
+```
+
+On va se connecter en tant que "albert".    
+
+On peut donner une valeur à une variable via la ligne de commande
 
 ```
 - name: pass a message on the command line
