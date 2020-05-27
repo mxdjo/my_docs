@@ -9,9 +9,43 @@ Nous avons juste besoin de dire ce que nous voulons faire en utilisant les bons 
  
 Nous allons faire ping sur tous nos hôtes pour notre premier playbook.
 
-Chaque playbook doit contenir:
-* des hôtes à configurer
-* une liste de tâches à exécuter sur ces hôtes 
+Un playbook peut contenir:
+
+* **hosts** :la section des cibles/machines à configurer
+* **vars** : la section des variables
+* **tasks**:: la section des taches à effectuer
+* **handlers**: ce sont des tasks "un peu spéciales"
+
+##### hosts #####
+La déclaration des hosts ressemble à un truc de ce genre: 
+
+```
+- hosts: webservers
+```
+
+##### vars #####
+Ici nous pouvons déclarer des variables qui peuvent être utilisés dans tout le playbook.
+
+```
+vars:
+ apache_version: 2.6.2
+```
+Nous verrons devant comment mieux utiliser les variables
+
+##### tasks #####
+
+La section tasks est la dernière section de chaque play. Elle contient une liste des actions que vous voulez qu'Ansible exécute dans l'ordre où vous voulez qu'elles soient exécutées. 
+```
+tasks:
+- name: install apache
+  action: yum name=httpd state=installed
+- name: configure apache
+  copy: src=files/httpd.conf dest=/etc/httpd/conf/httpd.conf
+- name: restart apache
+  service:
+    name: httpd
+    state: restarted
+```
 
 ```
 ---
