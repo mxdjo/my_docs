@@ -2,7 +2,7 @@ Dans la gestion de la configuration, l'outil que vous utilisez doit savoir sur q
 
 ### Le fichier inventory par défaut ###
 
-Par défaut, Ansible lit le fichier _/etc/ansible/hosts_ comme son fichier d'inventaire par défaut. Cependant, l'utilisation de ce fichier n'est pas recommandée. Nous devons donc conserver un fichier d'inventaire différent pour chaque projet que nous avons et le transmettre aux commandes ansible et ansible-playbook à l'aide de l'option –i. Un exemple d'un fichier d'inventaire qu'on passe à _ansible_ avant d'exécuter le module ping:
+Par défaut, Ansible lit le fichier _/etc/ansible/hosts_ comme son fichier d'inventaire par défaut (défini dans /etc/ansible/ansible.cfg). Cependant, l'utilisation de ce fichier n'est pas recommandée. Nous devons donc conserver un fichier d'inventaire différent pour chaque projet que nous avons et le transmettre aux commandes ansible et ansible-playbook à l'aide de l'option –i. Un exemple d'un fichier d'inventaire qu'on passe à _ansible_ avant d'exécuter le module ping:
 
 ```
 #ansible all –i /path/to/inventory –m ping
@@ -40,4 +40,41 @@ host2
 ntp_server=ntp.atlanta.example.com
 proxy=proxy.atlanta.example.com
 
+``` 
+
+### Le dossier host_vars ###   
+
+Au lieu de déclarer tous les paramètres liés aux remotes dans le fichier inventory,on peut créer un dossier *host_vars*. Puis dans ce dossier, créer des fichiers YAML où nous définirons les paramètres et leurs valeurs.     
+Supposons qu'on ait dans notre inventory ceci:
+
+```
+db_remote ansible_user=utilisateur ansible_ssh_pass=motdepasse23
+#nom de l'hote   #utilisateur ansible   #mot de passe ansible
+```
+
+On aura cette structure (dans le même fichier que notre playbook)
+
+```
+host_vars/
+├── db_remote.yml
+
+```
+Nous pourrons ensuite déplacer les paramètres dans le nouveau fichier db_remote.yml     
+
+```
+ansible_ssh_pass: motdepasse123
+ansible_host: 192.168.56.1
+```
+Remarquez que nous sommes passés du format INI au format YML.     
+Quand notre playbook sera exécuté, Ansible va automatiquement regarder ces fichiers et les associer à leurs hôtes.   
+
+Note :Il est important que:
+* notre dossier soit nommé *host_vars*
+* le fichier ait le même nom que l'hôte (db_remote => db_remote.yml)  
+
+On peut créer un dossier group_vars pour y définir les paramètres des hôtes.C'est plus intéressant de le faire lorsque les hôtes partagent les mêmes variables.Dans le fichier du group (fichier ayant le nom du groupe, .yml à la fin) les paramètres sont definis ainsi:   
+```
+    db_user: db_user
+    db_password: db_super_password
+    db_name: ma_bdd
 ``` 
