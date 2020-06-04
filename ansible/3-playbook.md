@@ -1,12 +1,11 @@
 Les playbooks Ansible  sont  des fichiers YAML utilisés pour informer Ansible sur ce qu'il devrait faire.
 
-Le concept est simple. ce n'est qu'une série de commandes (tasks) ansibles, comme celles que nous avons utilisées avec l'outil CLI ansible. Ces tâches visent un ensemble spécifique d'hôtes / groupes.   
+Le concept est simple. ce n'est qu'une série de commandes (tasks) ansibles, comme celles que nous avons utilisées avec l'outil CLI ansible. Ces tâches visent un ensemble spécifique d'hôtes / groupes.  
 
-Nous avons juste besoin de dire ce que nous voulons faire en utilisant les bons modules ansibles.   
-
+Nous avons juste besoin de dire ce que nous voulons faire en utilisant les bons modules ansibles.  
 
 ### Notre premier playbook ###
- 
+
 Nous allons faire ping sur tous nos hôtes pour notre premier playbook.
 
 Un playbook peut contenir:
@@ -49,7 +48,7 @@ tasks:
 
 ```
 ---
-### Le playbook commence par les trois tirets du haut
+### début du playbook
 
 #On définit ensuite les hôtes sur lesquels executés ces plays et les tasks
 - hosts: all
@@ -112,16 +111,88 @@ ansible-playbook -K playbook.yml
 
 ### Paramètres optionnels dans les playbooks ####
 
-En plus des _tasks_ et des _hosts_, on peut avoir dans un playbook _become_ qui permet d'exécuter le playbook en tant qu'autre utilisateur ( root) par exemple, _vars_ qui définit une liste de variables et leurs valeurs
+En plus des _tasks_ et des _hosts_, on peut avoir dans un playbook _become_ qui permet d'exécuter le playbook en tant qu'autre utilisateur ( root) par exemple.
+
+
+**Note**: Pour voir comment utiliser un module dans un playbook, il faut se referer à la documentation car les modules sont mis à jour régulièrement. Au moment de la redaction de ce tuto par exemple, on pouvait installer plusieurs paquets comme ceci:
+
+```
+- name: install many packages
+  apt: name={{ item }} state=present
+  with_items:
+    - package1
+    - package2
+    - package3
+```
+Cependant quand on lance le playbook, les Depreceation_warnings nous disent que cette manière de faire ne sera plus valide dans Ansible 2.11    
+
+
+### Bonne pratique: Separer les taches ###
+
+Au lieu de definir toutes les taches dans un seul playbook, on peut séparer les taches qui concernent par exemple le serveur web de celles du serveur de BDD. Ensuite, on déclare les playbooks dans le playbook principal avec *include*   
+Cette manière de procéder permet de reutiliser les taches dans d'autres playbook.     
+
+Supposons qu'on a un fichier playbook.yml dont le contenu est le suivant:
+
+```
+# J'ai omis les modules utilisés juste pour l'illustration
+- hosts:
+  tasks:
+ - name: Install Apache
+ - name: Install PHP
+ - name: Create Vhost
+ - name: Install MySQL
+ - name: Start MySQL
+ - name: Create Application Database
+ - name: Create database user
+
+```      
+
+On créera un dossier **tasks** dans lequels on mettra nos fichiers obtenus( pour l'exemple deploy_db.yml et deploy_web.yml).  On passe du seul fichier "playbook.yml" cette structure
+```
+
+```
+root_folder/
+├── tasks/
+│   ├── deploy_db.yml
+│   ├── deploy_web.yml
+│
+├─ playbook.yml
+```
+Contenu du fichier deploy_db.yml:    
+```
+ - name: Install MySQL
+ - name: Start MySQL
+ - name: Create Application Database
+ - name: Create database user
+```
+
+Contenu du fichier deploy_web.yml
+```
+ - name: Install Apache
+ - name: Install PHP
+ - name: Create Vhost
+
+```
+Contenu de notre fichier playbook.yml
+
+```
+# J'ai omis les modules utilisés juste pour l'illustration
+- hosts:
+  tasks:
+ - include: tasks/deploy_db.yml
+ - include: tasks/deploy_web.yml
+
 
 ### Vérifier son playbook avec ansible-lint ###
+
+
+```
 ansible-lint nom_du_playbook
-
+```
 ansible-lint doit cependant être installé avec pip
-
-```
 pip install ansible-lint
-```
+
 
 ### Exercice ###
 Créons un playbook qui permet d'installer la Stack LAMP sur Ubuntu/Debian

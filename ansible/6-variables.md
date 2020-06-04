@@ -357,3 +357,5 @@ La commande ansible-playbook est:
 ```
 ansible-playbook greet.yml -e greeting=hiya
 ```
+
+Liens intéressants: https://blog.ruanbekker.com/blog/2020/01/24/environment-variables-with-ansible/
