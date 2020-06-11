@@ -62,7 +62,23 @@ A chaque "run", le client sollicite le daemon docker qui:
 2. le daemon télécharge l'image à partir du Docker Hub
 3. Ensuite, le daemon crée un nouveau container à partir de l'image
 
-### Permette a mon user d'appeler docker sans sudo ###
+## Architecture Docker ##
+
+![Architecture Docker- crédit geekflare.com](images/docker-architecture.webp)
+
+Le moteur Docker est une application client-serveur avec ces composants majeurs :
+
+* Un serveur qui est un type de programme de longue durée appelé "daemon process" (la commande dockerd).
+* Une API REST qui spécifie les interfaces que les programmes peuvent utiliser pour parler au démon et lui indiquer ce qu'il doit faire.
+* Un client d'interface de ligne de commande (CLI) (la commande docker).
+
+![Composants moteur Docker](images/engine-components-flow.png)
+
+Le CLI utilise l'API REST du Docker pour contrôler ou interagir avec le démon du Docker par le biais de scripts ou de commandes CLI directes. De nombreuses autres applications du Docker utilisent l'API et la CLI sous-jacentes.
+
+Le démon crée et gère les objets du Docker, tels que les images, les conteneurs, les réseaux et les volumes.
+
+### Permette à mon user d'appeler docker sans sudo ###
 
  Par défaut on ne peut lancer les commandes docker qu'avec l'utilisateur root et les autres utilisateurs ne peuvent y accéder qu'en utilisant le sudo.
 
@@ -80,3 +96,5 @@ Après redemarrage de la machine, on peut vérifier si c'est bon:
 docker ps
 # Sans sudo
 ```
+
+<https://www.linkedin.com/pulse/docker-les-principaux-composants-anthony-bondu/>
