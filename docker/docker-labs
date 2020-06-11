@@ -1,0 +1,16 @@
+Créer un docker 
+LAMP
+SLAMP: inclure differentes versions de PHP et permettre de choisir , soit en modifiant un fichier d'ENV. S'assurer qu'il n'y ait pas de PHP dans le meme conteneyr
+
+SLAMYP: differentes versions de MySQL, differents versions de PHP.
+
+On peut le Docker-compose, bash
+
+
+Techno
+vtiger
+tesseract OCR
+
+
+Ansible: installer Vitiger CRM
+Avec securisation de mysql_secure_installation
