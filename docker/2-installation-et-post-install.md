@@ -90,11 +90,13 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
-Après redemarrage de la machine, on peut vérifier si c'est bon:
+Après redemarrage de la machine, vous verrez l'apparition d'une interface réseau (docker0 dans mon cas) .
+on peut aussi vérifier si nous pouvons utiliser docker sans sudo:
 
 ```bash
 docker ps
 # Sans sudo
 ```
+
 
 <https://www.linkedin.com/pulse/docker-les-principaux-composants-anthony-bondu/>

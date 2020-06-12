@@ -61,3 +61,4 @@ Un conteneur logiciel contient une application comprenant toutes les dépendance
 
 ![Comparaison VM vs container](images/comparaison-docker-vm.png)
 Crédit image: IONOS 1&1
+
