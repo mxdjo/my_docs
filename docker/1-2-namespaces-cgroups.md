@@ -64,3 +64,5 @@ http://jpetazzo.github.io/2013/10/08/docker-containers-metrics/
 https://github.com/baghorsoufiane/docker
 
 plus: https://www.youtube.com/watch?v=sK5i-N34im8
+
+http://sysblog.informatique.univ-paris-diderot.fr/2019/03/08/docker-facile-en-7-etapes/
