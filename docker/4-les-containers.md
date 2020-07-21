@@ -82,7 +82,20 @@ Pour créer une instance de notre image, ou autrement dit créer un conteneur, a
 docker run [OPTIONS] <IMAGE_NAME ou ID>
 ```
 
-Nous allons pour le moment créer un conteneur basé sur l'image hello-world, et pour faire les choses dans les règles de l'art, nous allons d'abord commencer par télécharger notre image depuis le Docker Hub Registry, et ensuite on va exécuter notre image afin de créer notre conteneur.
+Exemple: docker run dockertraining/hello_world
+
+La première fois que nous exécutons la commande, Docker doit déterminer si dockerinaction/
+hello_world est déjà installé. S'il ne parvient pas à le localiser sur votre ordinateur (car
+c'est la première chose que vous faites avec Docker), Docker passe un appel vers Docker Hub. Docker Hub est un registre public fourni par Docker Inc. Docker Hub répond à l'exécution de Docker sur votre ordinateur où dockertraining/hello_world peut être trouvé, et
+Docker démarre le téléchargement.
+
+![Docker run pour la 1ere fois](images/docker-run-image.png)
+
+Lorsque nous exécutons pour la seconde fois, Docker vérifie à nouveau si dockertraining/hello_world est installé. Cette fois, il le trouve et peut construire un nouveau container. Le processus est le suivant:
+
+![Docker run pour la 2eme fois](images/docker-run-2nd.png)
+
+Pour notre tutoriel,nous allons pour le moment créer un conteneur basé sur l'image hello-world, et pour faire les choses dans les règles de l'art, nous allons d'abord commencer par télécharger notre image depuis le Docker Hub Registry, et ensuite on va exécuter notre image afin de créer notre conteneur.
 
 Etape 1: téléchargement de l'image hello-world
 
