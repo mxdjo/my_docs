@@ -223,3 +223,97 @@ docker run --name monServeurWeb -p 8080:80 httpd:latest
  Une fois votre image exécutée, visitez http://localhost:8080 ou http://@_IP_de_la_machine:8080 et vous verrez la phrase "It works"!
 
 
+### Afficher la liste des container ###
+
+Pour supprimer notre conteneur, il faut d'abord l'identifier et par la suite récolter soit son id, soit son nom. Ça sera l'occasion de vous dévoiler une commande que vous utiliserez beaucoup, cette commande vous permettra de lister les conteneurs disponibles sur votre machine.
+
+```shell
+docker container ls
+```
+
+Résultat de la commande
+
+```shell
+CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS              PORTS                  NAMES
+832209264a66        httpd:latest        "httpd-foreground"   3 seconds ago       Up 2 seconds        0.0.0.0:8080->80/tcp   monServeurWeb2
+```
+Voici l'explication des différentes colonnes :
+* CONTAINER ID : id du conteneur
+* IMAGE : L'image sur laquelle c'est basé le conteneur
+* COMMAND : Dernière commande lancée lors de l'exécution de votre image (ici la commande httpd-foreground permet de lancer le service apache en premier plan)
+* CREATED : date de création de votre conteneur
+* STATUS : statut de votre conteneur, voici une liste des différents états d'un conteneur :
+       
+  * created : conteneur créé mais non démarré (cet état est possible avec la commande docker create)
+  * restarting : conteneur en cours de redémarrage
+  * running : conteneur en cours d'exécution
+  * paused : conteneur stoppé manuellement (cet état est possible avec la commande docker pause)
+  * exited : conteneur qui a été exécuté puis terminé
+  * dead : conteneur que le service docker n'a pas réussi à arrêter correctement (généralement en raison d'un périphérique occupé ou d'une ressource utilisée par le conteneur)
+
+* PORTS : les ports utilisés par votre conteneur
+* NAMES : nom de votre conteneur
+
+
+### Supprimer un container ###
+
+ Maintenant que nous avons pu récupérer l'id ou le nom du conteneur, on est capable de supprimer notre conteneur avec la commande suivante : 
+
+ ```bash
+ docker rm <CONTAINER NAME ou ID>
+ ```
+
+Ce sera donc:
+
+```bash
+docker rm monServeurWeb
+```
+
+### Exécuter une commande dans un container ###
+
+Il existe une commande docker exec qui permet de lancer n'importe quelle commande dans un conteneur déjà en cours d'exécution. Nous allons l'utiliser pour récupérer notre interpréteur de commande /bin/bash, ce qui aura pour but de se connecter directement à notre conteneur Apache.
+
+```bash
+docker exec -ti monServeurWeb /bin/bash
+```
+
+Pour s'amuser un peu, on va changer le message de la page d'accueil : 
+
+```bash
+echo "<h1>Docker c'est vraiment cool</h1>" > /usr/local/apache2/htdocs/index.html
+```
+
+ Pour quitter votre conteneur sans le détruire, utilisez le raccourcis suivant : Ctrl + P + Q
+
+ ### Afficher les logs d'un container ###
+
+  Dès fois, vous aurez besoin de déboguer votre conteneur en regardant les sorties/erreurs d'un conteneur.
+
+Il existe pour cela la commande *docker logs* qui vient avec deux options très utiles :
+* -f : suivre en permanence les logs du conteneur (correspond à tail -f)
+* -t : afficher la date et l'heure de réception des logs d'un conteneur
+
+```bash
+docker logs -ft monServeurWeb
+```
+
+### Transformer son container en images ###
+
+Voici la commande qui permet de transformer un conteneur en image, afin de stocker nos données
+
+**Attention**
+**Je le répète mais c'est très important, cette commande n'est pas vraiment recommandée, pour stocker vos données. Il faut pour ça utiliser les volumes, que nous verrons dans un autre chapitre.**
+
+la commande est la suivante
+
+```bash
+docker commit <CONTAINER NAME or ID> <NEW IMAGENAME>
+```
+
+exemple:
+
+```bash
+docker commit monUbuntu ubuntugit
+```
+
+On peut donc voir notre nouvelle image avec "docker images"
