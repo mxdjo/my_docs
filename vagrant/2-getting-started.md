@@ -1,3 +1,13 @@
+### Terminologie vagrant ###
+
+* Box: une Box est un package Vagrant, une machine virtuelle
+* Provider: Un provider fournit le support de virtualisation. Les providers sont de 2 types:
+  - Local: Virtualbox, Vmware
+  - Cloud: AWS, GCP....
+
+
+
+
 ### Installation de vagrant ###
 L'installation est vraiment facile.   
 Il suffit de récupérer le paquet compatible à notre plateforme sur le site https://www.vagrantup.com/downloads.html 
