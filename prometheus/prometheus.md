@@ -177,3 +177,19 @@ Pour vérifier le fichier de configuration
 
 Nous verrons comment installer et configurer les exporters pour monitorer
 
+
+# installation de grafana #
+
+https://grafana.com/docs/grafana/latest/installation/rpm/
+
+https://grafana.com/docs/grafana/latest/installation/debian/
+
+
+( voir https://devconnected.com/how-to-setup-grafana-and-prometheus-on-linux/#a_Importing_a_Prometheus_dashboard_into_Grafana )
+
+apres avoir fini l'installation de grafana,on importe le dashboard "1860"
+
+# ports #
+
+grafana: 3000
+prometheus: 9090
