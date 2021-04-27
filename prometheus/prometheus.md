@@ -189,7 +189,52 @@ https://grafana.com/docs/grafana/latest/installation/debian/
 
 apres avoir fini l'installation de grafana,on importe le dashboard "1860"
 
+# Installation de l'exporter de monitoring des sites web #
+Pour que prometheus supervise nos sites, il faut ajouter un exporter. Dans notre cas, c'est BlackBox exporter
+
+On récupère d'abord la version à jour de blackbox, elle est visible ici https://github.com/prometheus/blackbox_exporter/releases
+Dans mon cas la version est 0.18.0
+ 
+``bash
+
+wget https://github.com/prometheus/blackbox_exporter/releases/download/v0.18.0/blackbox_exporter-0.18.0.linux-amd64.tar.gz
+``
+
+On décompresse le fichier puis on copie le fichier binaire dans /usr/local/bin et on change le propriétaire
+
+``bash
+tar -xvf blackbox_exporter-0.18.0-*
+``
+
+``bash
+cp blackbox_exporter-0.18.0.linux-amd64/blackbox_exporter /usr/local/bin/blackbox_exporter
+``
+
+``bash
+
+chown blackbox:blackbox /usr/local/bin/blackbox_exporter
+``
+On crée
+
+``
+mkdir /etc/blackbox
+
+vim /etc/blackbox/blackbox.yml
+``
+
+``
+modules:
+  http_2xx:
+    prober: http
+    timeout: 5s
+    http:
+      valid_status_codes: []
+      method: GET
+
+``
+
 # ports #
 
 grafana: 3000
 prometheus: 9090
+blackbox: 9115
